@@ -14,6 +14,10 @@ const Selector = () => {
         const url = 'https://restcountries.com/v3.1/all?fields=name';
         axios.get(url).then(res => setCountries(res.data)).catch((error) => console.log(error));
     }, []);
+
+    const handlesearchValue = value => {
+        setInputValue(value);
+    }
     return (
         <div className='w-72 h-80 font-medium'>
             <div className={`bg-white w-full p-2 flex items-center justify-between rounded ${!selectedCountry && 'text-gray-700'}`} onClick={() => setOpen(!open)}>
@@ -35,8 +39,8 @@ const Selector = () => {
                             <input
                                 type="text"
                                 value={inputValue}
-                                onChange={(e) => setInputValue(e.target.value)}
-                                placeholder="Search country"
+                                onChange={(e) => handlesearchValue(e.target.value)}
+                                placeholder='Search country'
                                 className="placeholder:text-gray-700 w-full p-2 outline-none"
                             />
                         </div>
@@ -55,6 +59,9 @@ const Selector = () => {
                                     {country.name.common}
                                 </li>
                             ))
+                        }
+                        {
+                            inputValue?.length > 0 && countries.filter(country => country.name.common.toLowerCase() !== inputValue.toLowerCase()) ? <li className='px-2'>No data found</li> : ''
                         }
 
                     </ul>
