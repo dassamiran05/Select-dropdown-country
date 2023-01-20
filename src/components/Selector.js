@@ -43,9 +43,9 @@ const Selector = () => {
                         {
                             countries?.map((country) => (
                                 <li className={` p-2 text-sm hover:bg-sky-600 hover:text-white 
-                                ${country?.name.common.toLowerCase() === selectedCountry?.toLocaleLowerCase() && 'bg-sky-600 text-white'}
-                                ${country.name.common.toLowerCase().startsWith(inputValue) ? 'block' : 'hidden'}`} key={country.name.common} onClick={() => {
-                                        if (country?.name.common.toLowerCase() !== selectedCountry?.toLocaleLowerCase()) {
+                                ${country?.name.common.toLowerCase() === selectedCountry?.toLowerCase() && 'bg-sky-600 text-white'}
+                                ${country?.name.common.toLowerCase().startsWith(inputValue) ? 'block' : 'hidden'}`} key={country.name.common} onClick={() => {
+                                        if (country?.name.common.toLowerCase() !== selectedCountry?.toLowerCase()) {
                                             setSelectedCountry(country.name.common);
                                             setOpen(false);
                                             setInputValue('');
