@@ -61,7 +61,7 @@ const Selector = () => {
                             ))
                         }
                         {
-                            inputValue?.length > 0 && countries.filter(country => country.name.common.toLowerCase() !== inputValue.toLowerCase()) ? <li className='px-2'>No data found</li> : ''
+                            inputValue?.length > 1 && countries.filter(country => country.name.common.toLowerCase() !== inputValue.toLowerCase()) ? <li className='px-2'>No data found</li> : ''
                         }
 
                     </ul>
